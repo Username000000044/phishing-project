@@ -1,6 +1,10 @@
 import "../index.css";
 
-import chart from "/media/chart.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+// const SHORT_LINK = 'https://your.short.link'; // Replace this with your Short.io link
+// const SHORTIO_API_KEY = 'your_shortio_api_key_here';
 
 const Phishing = () => {
   return (
