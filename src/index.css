@@ -1,0 +1,16 @@
+@font-face {
+  font-family: Anonymous Pro;
+  src: url("/fonts/AnonymousPro-Bold.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("/fonts/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: Roboto, "sans-serif";
+  --font-anonymous: Anonymous Pro, "monospace";
+}
