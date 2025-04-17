@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 const UPSTASH_REST_URL = `${process.env.UPSTASH_REDIS_REST_URL}`;
+console.log(process.env.UPSTASH_REDIS_REST_URL);
 const UPSTASH_REST_TOKEN = `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}`;
 
 const headers = {
