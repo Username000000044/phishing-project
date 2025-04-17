@@ -1,3 +1,5 @@
+// components/Phishing.tsx
+
 import { useEffect, useState } from "react";
 import { incrementVisitCount } from "../lib/pageCounter";
 
@@ -5,18 +7,10 @@ const Phishing = () => {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    const fetchVisitCount = async () => {
-      try {
-        const updatedCount = await incrementVisitCount();
-        setCount(updatedCount);
-      } catch (error) {
-        console.error("Error fetching visit count:", error);
-        setCount(null);
-      }
-    };
-
-    fetchVisitCount();
-  }, []); // Empty dependency array ensures this runs only once on mount
+    incrementVisitCount()
+      .then(setCount)
+      .catch(() => setCount(null));
+  }, []);
 
   return (
     <div className="flex flex-col font-roboto min-h-screen bg-white justify-center items-center">
