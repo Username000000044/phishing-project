@@ -1,12 +1,15 @@
 import "../index.css";
 
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-
-// const SHORT_LINK = 'https://your.short.link'; // Replace this with your Short.io link
-// const SHORTIO_API_KEY = 'your_shortio_api_key_here';
+import { useEffect, useState } from "react";
+import { incrementVisitCount } from "../lib/pageCounter";
 
 const Phishing = () => {
+  const [visits, setVisits] = useState<number | null>(null);
+
+  useEffect(() => {
+    incrementVisitCount().then(setVisits);
+  }, []);
+
   return (
     <div className="flex flex-col font-roboto min-h-screen bg-white justify-center items-center">
       <section className="bg-[#2C2F33] max-w-[70rem] text-center shadow-[0px_0px_110px_15px_rgba(60,190,27,0.2)] rounded-lg p-8">
@@ -28,9 +31,15 @@ const Phishing = () => {
           </p>
         </div>
       </section>
-      <p className="text-left text-lg mt-2">
-        {1} Staff Member(s) have fallen for this phishing email/form
-      </p>
+      <div className="text-black text-lg mt-2">
+        {visits !== null ? (
+          <p>
+            {visits} Staff Member(s) have fallen for this phishing email/form.
+          </p>
+        ) : (
+          <p>Loading visit count...</p>
+        )}
+      </div>
     </div>
   );
 };
