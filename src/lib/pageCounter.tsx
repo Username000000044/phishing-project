@@ -7,7 +7,7 @@ console.log("Upstash URL:", REST_URL);
 console.log("Upstash Token:", REST_TOKEN);
 
 export async function incrementVisitCount(): Promise<number> {
-  const response = await fetch(`${REST_URL}/incr/page-visits`, {
+  const res = await fetch(`${REST_URL}/incr/page-visits`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${REST_TOKEN}`,
@@ -15,10 +15,10 @@ export async function incrementVisitCount(): Promise<number> {
     },
   });
 
-  if (!response.ok) {
-    throw new Error(`Failed to increment visit count: ${response.statusText}`);
+  if (!res.ok) {
+    throw new Error("Failed to increment visit count");
   }
 
-  const data = await response.json();
-  return data.result as number;
+  const data = await res.json();
+  return data.result;
 }
