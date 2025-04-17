@@ -5,10 +5,10 @@ const Phishing = () => {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    console.log("useEffect triggered: Incrementing visit count"); // Add this log to check if useEffect is triggered
+    console.log("useEffect triggered"); // Check if useEffect is being called
     incrementVisitCount()
       .then((newCount) => {
-        console.log("Visit count updated:", newCount); // Log the new count
+        console.log("Visit count updated:", newCount);
         setCount(newCount);
       })
       .catch((error) => {
@@ -32,9 +32,9 @@ const Phishing = () => {
             Phishing attacks are deceptive attempts by cybercriminals to trick
             individuals into revealing sensitive information, such as passwords
             or credit card numbers, by impersonating trusted entities. This form
-            and email was contructed to appear as legit however when clicked on,
-            redirected the user to another page, and could have been used to
-            collect sensitive data.
+            and email was constructed to appear as legit; however, when clicked
+            on, it redirected the user to another page and could have been used
+            to collect sensitive data.
           </p>
         </div>
       </section>
