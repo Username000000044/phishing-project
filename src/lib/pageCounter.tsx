@@ -1,5 +1,3 @@
-import "dotenv/config";
-
 const REST_URL = `https://harmless-polecat-21240.upstash.io`;
 const REST_TOKEN = `AVL4AAIjcDE4MmFhNGQ4MGNlMDE0MDA0OWNkOTI3MWJhM2ZiODZmYnAxMA`;
 
