@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { incrementVisitCount } from "../lib/pageCounter";
-import "../index.css";
 
 const Phishing = () => {
   const [count, setCount] = useState<number | null>(null);
@@ -10,10 +9,7 @@ const Phishing = () => {
   useEffect(() => {
     incrementVisitCount()
       .then(setCount)
-      .catch((err) => {
-        console.error("Error incrementing visit count:", err);
-        setCount(null);
-      });
+      .catch(() => setCount(null));
   }, []);
 
   return (
@@ -29,14 +25,19 @@ const Phishing = () => {
           </h1>
           <p className="text-2xl text-gray-400 text-justify ms-4 my-8">
             Phishing attacks are deceptive attempts by cybercriminals to trick
-            individuals into revealing sensitive information by impersonating
-            trusted entities.
+            individuals into revealing sensitive information, such as passwords
+            or credit card numbers, by impersonating trusted entities. This form
+            and email was constructed to appear as legit; however, when clicked
+            on, it redirected the user to another page and could have been used
+            to collect sensitive data.
           </p>
         </div>
       </section>
       <div className="text-black text-lg mt-2">
         {count !== null ? (
-          <p>{count} staff member(s) have fallen for this phishing test.</p>
+          <p>
+            {count} Staff Member(s) have fallen for this phishing email/form.
+          </p>
         ) : (
           <p>Loading visit count...</p>
         )}
