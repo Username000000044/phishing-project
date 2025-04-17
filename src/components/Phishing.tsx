@@ -7,9 +7,11 @@ const Phishing = () => {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    incrementVisitCount()
-      .then(setCount)
-      .catch(() => setCount(null));
+    setTimeout(function () {
+      incrementVisitCount()
+        .then(setCount)
+        .catch(() => setCount(null));
+    }, 2000);
   }, []);
 
   return (
