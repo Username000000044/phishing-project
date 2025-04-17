@@ -1,14 +1,13 @@
 import "../index.css";
 
 import { useEffect, useState } from "react";
-import { incrementVisitCount } from "../lib/pageCounter";
+import { getVisitCount } from "../lib/pageCounter";
 
 const Phishing = () => {
   const [visits, setVisits] = useState<number | null>(null);
+  const getCount = +getVisitCount();
 
-  useEffect(() => {
-    incrementVisitCount().then(setVisits);
-  }, []);
+  setVisits(getCount);
 
   return (
     <div className="flex flex-col font-roboto min-h-screen bg-white justify-center items-center">
