@@ -1,7 +1,7 @@
 import "dotenv/config";
 
-const UPSTASH_REST_URL = `https://harmless-polecat-21240.upstash.io`;
-const UPSTASH_REST_TOKEN = `Bearer AVL4AAIjcDE4MmFhNGQ4MGNlMDE0MDA0OWNkOTI3MWJhM2ZiODZmYnAxMA`;
+const UPSTASH_REST_URL = `${process.env.UPSTASH_REDIS_REST_URL}`;
+const UPSTASH_REST_TOKEN = `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}`;
 
 const headers = {
   Authorization: UPSTASH_REST_TOKEN,

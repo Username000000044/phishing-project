@@ -1,13 +1,21 @@
-import "../index.css";
-
 import { useEffect, useState } from "react";
-import { getVisitCount } from "../lib/pageCounter";
+import { incrementVisitCount } from "../lib/pageCounter";
 
 const Phishing = () => {
-  const [visits, setVisits] = useState<number | null>(null);
-  const getCount = +getVisitCount();
+  const [count, setCount] = useState<number | null>(null);
 
-  setVisits(getCount);
+  useEffect(() => {
+    console.log("useEffect triggered: Incrementing visit count"); // Add this log to check if useEffect is triggered
+    incrementVisitCount()
+      .then((newCount) => {
+        console.log("Visit count updated:", newCount); // Log the new count
+        setCount(newCount);
+      })
+      .catch((error) => {
+        console.error("Error updating visit count:", error);
+        setCount(null);
+      });
+  }, []);
 
   return (
     <div className="flex flex-col font-roboto min-h-screen bg-white justify-center items-center">
@@ -18,22 +26,22 @@ const Phishing = () => {
             <mark className="px-2 text-white bg-[#00b52e] rounded-sm">
               phished
             </mark>
-            !{/* <span className="text-[20rem] text-white">1</span> */}
+            !
           </h1>
           <p className="text-2xl text-gray-400 text-justify ms-4 my-8">
             Phishing attacks are deceptive attempts by cybercriminals to trick
             individuals into revealing sensitive information, such as passwords
             or credit card numbers, by impersonating trusted entities. This form
             and email was contructed to appear as legit however when clicked on,
-            redirected the user to another page, and could of been used to
-            collect sensative data.
+            redirected the user to another page, and could have been used to
+            collect sensitive data.
           </p>
         </div>
       </section>
       <div className="text-black text-lg mt-2">
-        {visits !== null ? (
+        {count !== null ? (
           <p>
-            {visits} Staff Member(s) have fallen for this phishing email/form.
+            {count} Staff Member(s) have fallen for this phishing email/form.
           </p>
         ) : (
           <p>Loading visit count...</p>

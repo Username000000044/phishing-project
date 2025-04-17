@@ -2,14 +2,9 @@ import { useState, useEffect } from "react";
 
 import PhishingPage from "../src/components/Phishing";
 import FormPage from "../src/components/Form";
-import { incrementVisitCount } from "./lib/pageCounter";
 
 const App = () => {
   const [pageRendered, setPageRendered] = useState<boolean>(false);
-
-  useEffect(() => {
-    incrementVisitCount();
-  }, []);
 
   useEffect(() => {
     const handleClick = () => {
