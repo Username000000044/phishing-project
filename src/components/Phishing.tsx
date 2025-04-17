@@ -5,17 +5,18 @@ const Phishing = () => {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    console.log("useEffect triggered"); // Check if useEffect is being called
-    incrementVisitCount()
-      .then((newCount) => {
-        console.log("Visit count updated:", newCount);
-        setCount(newCount);
-      })
-      .catch((error) => {
-        console.error("Error updating visit count:", error);
+    const fetchVisitCount = async () => {
+      try {
+        const updatedCount = await incrementVisitCount();
+        setCount(updatedCount);
+      } catch (error) {
+        console.error("Error fetching visit count:", error);
         setCount(null);
-      });
-  }, []);
+      }
+    };
+
+    fetchVisitCount();
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
     <div className="flex flex-col font-roboto min-h-screen bg-white justify-center items-center">
